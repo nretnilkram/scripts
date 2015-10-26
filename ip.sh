@@ -10,7 +10,7 @@ fi
 
 IPA=$(cat $FILE)
 IPB=$(curl icanhazip.com)
-EMAIL='mark.lintern@oracle.com'
+EMAIL='<insert email here>'
 FROM='sender@oracle.com'
 FROMNAME="Sender <sender@oracle.com>"
 
