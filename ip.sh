@@ -6,7 +6,7 @@
 #
 # Example:
 #
-# ip.sh "Mark Lintern (mark.lintern@oracle.com)" "mark.lintern@oracle.com"
+# ip.sh "fromaddress" "toaddress"
 
 FILE=~/outsideIP.txt
 
@@ -19,16 +19,16 @@ fi
 IPA=$(cat $FILE)
 IPB=$(curl -4 ip.nretnil.com)
 EMAIL=$2
-FROM="-r \"$1\""
+FROMOPTS="-r $1"
 HOSTNAME=$(hostname)
 
 if [ "$(uname)" == "Darwin" ]
 	then
-	FROM=""
+	FROMOPTS=""
 fi
 
 if [ $IPA != $IPB ]
 	then
-	echo "The Outside IP address on $HOSTNAME has changed from $IPA to $IPB" | mailx $FROM -s "$HOSTNAME IP Address Change" $EMAIL
+	echo "The Outside IP address on $HOSTNAME has changed from $IPA to $IPB" | mailx $FROMOPTS -s "$HOSTNAME IP Address Change" $EMAIL
 	echo $IPB > $FILE
 fi
