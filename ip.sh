@@ -17,22 +17,18 @@ if [ ! -e $FILE ]
 fi
 
 IPA=$(cat $FILE)
-IPB=$(curl -4 icanhazip.com)
+IPB=$(curl -4 ip.nretnil.com)
 EMAIL=$2
-FROM=$1
+FROM="-r \"$1\""
 HOSTNAME=$(hostname)
 
 if [ "$(uname)" == "Darwin" ]
 	then
-	CMD="mailx -s \"$HOSTNAME IP Address Change\" $EMAIL"
-else
-	CMD="mailx -r $FROM -s \"$HOSTNAME IP Address Change\" $EMAIL"
+	FROM=""
 fi
-
-echo $CMD
 
 if [ $IPA != $IPB ]
 	then
-	echo "The Outside IP address on $HOSTNAME has changed from $IPA to $IPB" | $CMD
+	echo "The Outside IP address on $HOSTNAME has changed from $IPA to $IPB" | mailx $FROM -s "$HOSTNAME IP Address Change" $EMAIL
 	echo $IPB > $FILE
 fi
