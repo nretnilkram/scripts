@@ -48,17 +48,12 @@ if [ $OUTIPA != $OUTIPB ]
 	SEND_EMAIL=true
 fi
 
-echo $EMAIL_BODY
-
 if [ $INIPA != $INIPB ]
 	then
 	EMAIL_BODY="The Inside IP address on $HOSTNAME has changed from $INIPA to $INIPB. $EMAIL_BODY"
 	echo $INIPB > $INFILE
 	SEND_EMAIL=true
 fi
-
-echo $EMAIL_BODY
-echo $SEND_EMAIL
 
 if [ $SEND_EMAIL ]
 	then
