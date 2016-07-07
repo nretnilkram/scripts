@@ -55,7 +55,7 @@ if [ $INIPA != $INIPB ]
 	SEND_EMAIL=true
 fi
 
-if [ $SEND_EMAIL ]
+if [ "$SEND_EMAIL" = true ]
 	then
 	echo "$EMAIL_BODY" | mailx $FROMOPTS -s "$HOSTNAME IP Address Change" $EMAIL
 fi
