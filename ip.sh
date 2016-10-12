@@ -1,5 +1,8 @@
 #!/bin/sh
 #
+# The MIT License (MIT)
+# Copyright (c) 2016 Nretnil Kram
+#
 # This script will check the current Outside/Inside IP with the IP it had last time and email if it changes.
 # This script has 3 required Arguments: From Email, To Email, Internal Network Device
 #
